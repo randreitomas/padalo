@@ -51,12 +51,15 @@ The response must be `{"status":"ok","service":"padalo-api"}`.
 
 ## 3. Vercel Web App
 
-Deploy the repository root so npm workspaces can include `packages/shared`. The included
-`vercel.json` runs `npm ci`, builds only `@padalo/web`, and publishes `apps/web/.next`. Do not set
-`apps/web` as the Vercel Root Directory for this configuration because Vercel root isolation prevents
-the app from reading the shared workspace above it. Vercel's current monorepo guidance explains the
-root-directory and workspace behavior in its [monorepo documentation](https://vercel.com/docs/monorepos)
-and [build configuration reference](https://vercel.com/docs/builds/configure-a-build).
+In **Project Settings > Build and Deployment**, set **Root Directory** to `apps/web`. Keep
+**Include source files outside of the Root Directory** enabled so the app can resolve
+`packages/shared` from the monorepo. The app-local `apps/web/vercel.json` changes to the repository
+root to run `npm ci` and the workspace build, then publishes `.next` relative to the Vercel project
+root. This resolves to `apps/web/.next` exactly once.
+
+Do not set a custom Output Directory in the Vercel dashboard. The committed configuration owns it as
+`.next`; using `apps/web/.next` while the Root Directory is already `apps/web` produces the duplicated
+path error. Vercel's [monorepo guide](https://vercel.com/docs/monorepos), [monorepo FAQ](https://vercel.com/docs/monorepos/monorepo-faq), and [build configuration reference](https://vercel.com/docs/builds/configure-a-build) document this root-relative behavior.
 
 Set these Vercel environment variables:
 

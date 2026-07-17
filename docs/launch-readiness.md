@@ -28,7 +28,7 @@
 
 - [x] FastAPI health endpoint remains available for Render.
 - [x] Docker honors the production `PORT` environment variable.
-- [x] Vercel workspace build configuration is committed.
+- [x] App-local Vercel workspace build configuration is committed.
 - [x] Playwright landing smoke coverage and screenshot capture support are included.
 - [x] Lint, typecheck, formatting, API tests, forecasting tests, end-to-end smoke test, and production
       build are run before submission.

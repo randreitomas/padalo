@@ -10,7 +10,7 @@
 ![Prophet](https://img.shields.io/badge/FXPilot-Prophet-0d766d)
 
 <p align="center">
-  <img src="apps/web/public/images/dashboard-overview.png" alt="Padalo Santos Family dashboard" width="900" />
+  <img src="apps/web/public/images/dashboard-live.png" alt="Current Padalo Santos Family dashboard" width="900" />
 </p>
 
 Padalo gives an Overseas Filipino Worker and their family one calm, shared picture of remittances,
@@ -45,13 +45,13 @@ foreign-exchange trading.
 
 ## Product Screens
 
-| Santos Family dashboard                                                   | FXPilot backtest                                                                              |
-| ------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
-| ![Santos Family dashboard](apps/web/public/images/dashboard-overview.png) | ![FXPilot Prophet and naive baseline MAE comparison](data/synthetic/fxpilot_backtest_mae.png) |
+| Santos Family dashboard                                                       | FXPilot backtest                                                                              |
+| ----------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| ![Current Santos Family dashboard](apps/web/public/images/dashboard-live.png) | ![FXPilot Prophet and naive baseline MAE comparison](data/synthetic/fxpilot_backtest_mae.png) |
 
-The dashboard screenshot is generated from the deterministic Santos scenario. The backtest chart is
-generated from the versioned synthetic provider history and is intentionally retained alongside its
-baseline comparison.
+The dashboard screenshot is captured from the current deterministic Santos Family demo. The backtest
+chart is generated from the versioned synthetic provider history and is intentionally retained alongside
+its baseline comparison.
 
 ## Architecture
 
@@ -206,7 +206,7 @@ install a Playwright browser or set `PLAYWRIGHT_CHROMIUM_EXECUTABLE`.
 
 The intended stack is:
 
-- **Vercel** for Next.js, using the committed root `vercel.json` workspace build.
+- **Vercel** for Next.js, using the committed `apps/web/vercel.json` workspace build.
 - **Render** for the Dockerized FastAPI service, with `/health` configured as the HTTP health check.
 - **Neon** for the production-like PostgreSQL database.
 
