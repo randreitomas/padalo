@@ -264,6 +264,3 @@ CORS configuration, Demo Mode safety, and deployed validation steps.
 
 Built for OpenAI Build Week with Next.js, FastAPI, SQLAlchemy, Neon PostgreSQL, OpenAI Responses
 API, Prophet, TanStack Query, React Hook Form, Zod, Tailwind CSS, Radix UI, Lucide, and Playwright.
-
-Landing photography: [John Schnobrich on Unsplash](https://unsplash.com/@johnishappysometimes), used
-under the [Unsplash License](https://unsplash.com/license).
