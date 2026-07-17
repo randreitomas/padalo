@@ -1,0 +1,40 @@
+{
+  "dataset_version": "fxpilot-synthetic-v1",
+  "random_seed": 20260717,
+  "date_start": "2023-01-01",
+  "date_end": "2026-07-17",
+  "providers": [
+    "Wise",
+    "Remitly",
+    "WorldRemit"
+  ],
+  "corridor": "AE-PH",
+  "rows": 3882,
+  "columns": [
+    "provider",
+    "corridor",
+    "date",
+    "fee_php",
+    "effective_exchange_rate",
+    "weekday",
+    "weekday_number",
+    "is_holiday",
+    "is_promo",
+    "is_payday",
+    "effective_cost_php_15000"
+  ],
+  "assumptions": {
+    "weekly_seasonality": true,
+    "payday_effects": [
+      14,
+      15,
+      16,
+      29,
+      30,
+      31
+    ],
+    "ph_holidays": true,
+    "provider_promo_periods": true,
+    "random_noise": "Seeded normal noise on fees and effective exchange rates."
+  }
+}

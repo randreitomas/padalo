@@ -1,0 +1,45 @@
+{
+  "name": "padalo",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Padalo + FXPilot monorepo scaffold.",
+  "packageManager": "npm@10.8.2",
+  "workspaces": [
+    "apps/web",
+    "packages/shared"
+  ],
+  "scripts": {
+    "dev": "concurrently -n web,api -c cyan,magenta \"npm run dev --workspace @padalo/web\" \"npm run dev:api\"",
+    "dev:win": "concurrently -n web,api -c cyan,magenta \"npm run dev --workspace @padalo/web\" \"npm run dev:api:win\"",
+    "demo": "npm run dev",
+    "demo:win": "npm run dev:win",
+    "dev:web": "npm run dev --workspace @padalo/web",
+    "dev:api": "cd apps/api && python -m uvicorn app.main:app --reload --host 0.0.0.0 --port 8000",
+    "dev:api:win": "cd apps/api && .venv\\Scripts\\python.exe -m uvicorn app.main:app --reload --host 0.0.0.0 --port 8000",
+    "build": "npm run build --workspaces --if-present",
+    "lint": "npm run lint --workspaces --if-present",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,css,md,mjs,yml,yaml}\"",
+    "format:check": "prettier --check \"**/*.{js,jsx,ts,tsx,json,css,md,mjs,yml,yaml}\"",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "api:install": "python -m pip install -r apps/api/requirements-dev.txt",
+    "api:install:win": "apps\\api\\.venv\\Scripts\\python.exe -m pip install -r apps/api/requirements-dev.txt",
+    "api:test": "cd apps/api && python -m pytest",
+    "api:test:win": "cd apps/api && .venv\\Scripts\\python.exe -m pytest",
+    "forecast:data": "python -m padalo_forecasting.dataset.generator",
+    "forecast:data:win": "apps\\api\\.venv\\Scripts\\python.exe -m padalo_forecasting.dataset.generator",
+    "forecast:evaluate": "python -m padalo_forecasting.evaluation.backtest --chart data/synthetic/fxpilot_backtest_mae.png",
+    "forecast:evaluate:win": "apps\\api\\.venv\\Scripts\\python.exe -m padalo_forecasting.evaluation.backtest --chart data/synthetic/fxpilot_backtest_mae.png",
+    "forecast:test": "cd packages/forecasting && python -m pytest",
+    "forecast:test:win": "cd packages/forecasting && ..\\..\\apps\\api\\.venv\\Scripts\\python.exe -m pytest",
+    "test:e2e": "playwright test",
+    "db:migrate": "cd apps/api && alembic upgrade head",
+    "db:migrate:win": "cd apps/api && .venv\\Scripts\\alembic.exe upgrade head",
+    "db:seed": "cd apps/api && python -m scripts.seed",
+    "db:seed:win": "cd apps/api && .venv\\Scripts\\python.exe -m scripts.seed"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.51.1",
+    "concurrently": "^9.1.0",
+    "prettier": "^3.3.3"
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "model_version": "fxpilot-prophet-v1",
+  "dataset_version": "fxpilot-synthetic-v1",
+  "providers": {
+    "Remitly": {
+      "provider": "Remitly",
+      "holdout_days": 56,
+      "prophet": {
+        "rmse": 6.467577021092174,
+        "mae": 4.957901228551429,
+        "mape": 1.5008876051980122
+      },
+      "baseline": {
+        "rmse": 58.450918283755705,
+        "mae": 43.556964285714294,
+        "mape": 13.902289480713224
+      },
+      "preferred_model": "prophet",
+      "comparison": "Prophet has lower MAE than the same-weekday baseline on this deterministic holdout (4.96 versus 43.56 PHP)."
+    },
+    "Wise": {
+      "provider": "Wise",
+      "holdout_days": 56,
+      "prophet": {
+        "rmse": 8.637340460532947,
+        "mae": 7.02029945556128,
+        "mape": 2.6071460444851513
+      },
+      "baseline": {
+        "rmse": 50.411991203907604,
+        "mae": 39.049642857142864,
+        "mape": 15.122529991251099
+      },
+      "preferred_model": "prophet",
+      "comparison": "Prophet has lower MAE than the same-weekday baseline on this deterministic holdout (7.02 versus 39.05 PHP)."
+    },
+    "WorldRemit": {
+      "provider": "WorldRemit",
+      "holdout_days": 56,
+      "prophet": {
+        "rmse": 9.895538965945352,
+        "mae": 8.315919100037862,
+        "mape": 2.2814617317593324
+      },
+      "baseline": {
+        "rmse": 60.78910202495181,
+        "mae": 47.21821428571429,
+        "mape": 14.070058801817304
+      },
+      "preferred_model": "prophet",
+      "comparison": "Prophet has lower MAE than the same-weekday baseline on this deterministic holdout (8.32 versus 47.22 PHP)."
+    }
+  }
+}

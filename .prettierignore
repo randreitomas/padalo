@@ -1,0 +1,10 @@
+node_modules
+.next
+dist
+build
+coverage
+.venv
+venv
+package-lock.json
+project.md
+data/synthetic/*.json
