@@ -252,6 +252,18 @@ CORS configuration, Demo Mode safety, and deployed validation steps.
 - [Deployment checklist](docs/deployment.md)
 - [Phase 6 QA checklist](docs/launch-readiness.md)
 
+## AI-Assisted Development
+
+Codex was used as an AI coding collaborator during the build: it helped inspect the existing codebase,
+plan scoped implementation steps, draft and revise TypeScript, Python, SQLAlchemy, and documentation
+changes, and run local checks where appropriate. GPT-5.6 was used through Codex for product reasoning,
+architecture review, debugging support, copy refinement, and explaining tradeoffs around the agent
+workflow, FXPilot forecasting, Demo Mode, and launch-readiness polish.
+
+AI assistance did not replace project verification. Generated or suggested changes were reviewed in the
+repository context, kept inside the documented architecture, and validated with the quality checks listed
+above before being treated as complete.
+
 ## Known Limitations
 
 - No authentication or production identity verification.
