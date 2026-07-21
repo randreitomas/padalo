@@ -12,6 +12,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import type { ForecastRecommendation } from "@/features/agent/agent-stream";
+import { DEMO_FXPILOT_RECOMMENDATION } from "@/features/agent/demo-simulation";
 import { formatPhp } from "@/lib/utils";
 
 type FxPilotRecommendationProps = {
@@ -20,9 +21,11 @@ type FxPilotRecommendationProps = {
 };
 
 export function FxPilotRecommendation({ className, recommendation }: FxPilotRecommendationProps) {
-  const summary = recommendation
-    ? `${recommendation.recommended_day} is the recommended day for ${formatPhp(recommendation.amount_php)} through ${recommendation.provider}, with estimated savings of ${formatPhp(recommendation.expected_savings_php)}.`
-    : "Ask PadaloAssist when to send money to generate a clear timing recommendation.";
+  const displayRecommendation = recommendation ?? DEMO_FXPILOT_RECOMMENDATION;
+  const isLiveRecommendation = recommendation !== null;
+  const summary = isLiveRecommendation
+    ? `${displayRecommendation.recommended_day} is the recommended day for ${formatPhp(displayRecommendation.amount_php)} through ${displayRecommendation.provider}, with estimated savings of ${formatPhp(displayRecommendation.expected_savings_php)}.`
+    : `Demo suggestion: send on ${displayRecommendation.recommended_day} through ${displayRecommendation.provider}. Ask PadaloAssist to refresh this timing for the household.`;
 
   return (
     <section aria-labelledby="fxpilot-heading" className={className}>
@@ -37,11 +40,9 @@ export function FxPilotRecommendation({ className, recommendation }: FxPilotReco
                 <h2 id="fxpilot-heading" className="text-sm font-semibold text-ink">
                   FXPilot
                 </h2>
-                {recommendation ? (
-                  <span className="text-xs font-medium text-lagoon">
-                    {recommendation.confidence} confidence
-                  </span>
-                ) : null}
+                <span className="text-xs font-medium text-lagoon">
+                  {displayRecommendation.confidence}
+                </span>
               </div>
               <p className="mt-1 text-sm leading-6 text-muted">{summary}</p>
             </div>
@@ -70,36 +71,51 @@ export function FxPilotRecommendation({ className, recommendation }: FxPilotReco
                 </DialogDescription>
               </DialogHeader>
 
-              {recommendation ? (
-                <dl className="grid gap-4 border-y border-line py-4 sm:grid-cols-3">
-                  <div>
-                    <dt className="text-xs font-medium text-muted">Recommended day</dt>
-                    <dd className="mt-1 text-sm font-semibold text-ink">
-                      {recommendation.recommended_day}
-                    </dd>
-                  </div>
-                  <div>
-                    <dt className="text-xs font-medium text-muted">Estimated savings</dt>
-                    <dd className="mt-1 text-sm font-semibold text-lagoon">
-                      {formatPhp(recommendation.expected_savings_php)}
-                    </dd>
-                  </div>
-                  <div>
-                    <dt className="text-xs font-medium text-muted">Confidence</dt>
-                    <dd className="mt-1 text-sm font-semibold text-ink">
-                      {recommendation.confidence}
-                    </dd>
-                  </div>
-                </dl>
-              ) : (
-                <div className="mt-5 flex items-start gap-3 border-y border-line py-4">
+              <div className="mt-5 rounded-md border border-[#e6efe9] bg-[#f7fbf9] px-4 py-4">
+                <div className="flex items-start gap-3">
                   <Sparkles className="mt-0.5 size-4 shrink-0 text-gold" aria-hidden="true" />
-                  <p className="text-sm leading-6 text-muted">
-                    Ask PadaloAssist about the best time to send money and FXPilot will return a
-                    provider-specific recommendation here.
-                  </p>
+                  <div>
+                    <p className="text-xs font-medium uppercase tracking-[0.08em] text-muted">
+                      Suggested send day
+                    </p>
+                    <p className="mt-1 text-2xl font-semibold tracking-tight text-ink">
+                      {displayRecommendation.recommended_day}
+                    </p>
+                    <p className="mt-2 text-sm leading-6 text-muted">
+                      For {formatPhp(displayRecommendation.amount_php)} through{" "}
+                      {displayRecommendation.provider}, FXPilot estimates about{" "}
+                      <span className="font-semibold tabular-nums text-lagoon">
+                        {formatPhp(displayRecommendation.expected_savings_php)}
+                      </span>{" "}
+                      in modeled savings
+                      {isLiveRecommendation
+                        ? " from the latest PadaloAssist forecast."
+                        : " in this Santos Family demo simulation."}
+                    </p>
+                  </div>
                 </div>
-              )}
+              </div>
+
+              <dl className="mt-4 grid gap-4 border-y border-line py-4 sm:grid-cols-3">
+                <div>
+                  <dt className="text-xs font-medium text-muted">Recommended day</dt>
+                  <dd className="mt-1 text-sm font-semibold text-ink">
+                    {displayRecommendation.recommended_day}
+                  </dd>
+                </div>
+                <div>
+                  <dt className="text-xs font-medium text-muted">Estimated savings</dt>
+                  <dd className="mt-1 text-sm font-semibold tabular-nums text-lagoon">
+                    {formatPhp(displayRecommendation.expected_savings_php)}
+                  </dd>
+                </div>
+                <div>
+                  <dt className="text-xs font-medium text-muted">Confidence</dt>
+                  <dd className="mt-1 text-sm font-semibold text-ink">
+                    {displayRecommendation.confidence}
+                  </dd>
+                </div>
+              </dl>
 
               <figure className="mt-5 overflow-hidden rounded-md border border-line bg-white">
                 <Image
@@ -116,11 +132,9 @@ export function FxPilotRecommendation({ className, recommendation }: FxPilotReco
                 </figcaption>
               </figure>
 
-              {recommendation ? (
-                <p className="mt-4 border-l-2 border-gold pl-3 text-xs leading-5 text-muted">
-                  {recommendation.disclaimer}
-                </p>
-              ) : null}
+              <p className="mt-4 border-l-2 border-gold pl-3 text-xs leading-5 text-muted">
+                {displayRecommendation.disclaimer}
+              </p>
             </DialogContent>
           </Dialog>
         </CardContent>

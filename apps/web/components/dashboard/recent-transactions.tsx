@@ -73,8 +73,8 @@ export function RecentTransactions({ transactions }: { transactions: Transaction
                     <p
                       className={
                         credit
-                          ? "text-sm font-semibold text-lagoon"
-                          : "text-sm font-semibold text-ink"
+                          ? "text-sm font-semibold tabular-nums text-lagoon"
+                          : "text-sm font-semibold tabular-nums text-ink"
                       }
                     >
                       {credit ? "+" : "-"}

@@ -10,6 +10,7 @@ import {
   type ForecastRecommendation,
 } from "@/features/agent/agent-stream";
 import type { AgentProgressStep } from "@/features/agent/agent-progress";
+import { findDemoScript, playDemoScript } from "@/features/agent/demo-simulation";
 import { api } from "@/lib/api/client";
 import { queryKeys } from "@/lib/query-keys";
 
@@ -72,25 +73,33 @@ export function useAgentChat(householdId: string) {
       setProgressSteps([createInitialProgressStep()]);
       setIsStreaming(true);
 
+      const handleEvent = (event: AgentStreamEvent) => {
+        handleAgentEvent({
+          event,
+          assistantMessageId,
+          householdId,
+          invalidateLedger,
+          setActivity,
+          setConversationId,
+          setError,
+          setMessages,
+          setProgressSteps,
+          setRecommendation,
+        });
+      };
+
       try {
+        const demoScript = findDemoScript(message);
+        if (demoScript) {
+          await playDemoScript(demoScript, handleEvent);
+          return;
+        }
+
         const response = await api.openAgentStream(householdId, {
           message,
           conversation_id: conversationId,
         });
-        await consumeAgentStream(response, (event) => {
-          handleAgentEvent({
-            event,
-            assistantMessageId,
-            householdId,
-            invalidateLedger,
-            setActivity,
-            setConversationId,
-            setError,
-            setMessages,
-            setProgressSteps,
-            setRecommendation,
-          });
-        });
+        await consumeAgentStream(response, handleEvent);
       } catch (streamError) {
         const messageText = agentErrorMessage(streamError);
         setError(messageText);

@@ -6,7 +6,7 @@ export default function Error({ reset }: { error: Error; reset: () => void }) {
   return (
     <main
       id="main-content"
-      className="flex min-h-screen items-center justify-center bg-canvas px-5"
+      className="flex min-h-dvh items-center justify-center bg-canvas px-5"
     >
       <ErrorState
         title="Padalo needs another moment"

@@ -100,7 +100,7 @@ export function AppShell({ children }: { children: ReactNode }) {
   return (
     <div
       className={cn(
-        "min-h-screen bg-canvas lg:grid lg:transition-[grid-template-columns] lg:duration-300 motion-reduce:lg:transition-none",
+        "min-h-dvh bg-canvas lg:grid lg:transition-[grid-template-columns] lg:duration-300 motion-reduce:lg:transition-none",
         isSidebarCollapsed
           ? "lg:grid-cols-[0_minmax(0,1fr)]"
           : "lg:grid-cols-[15.5rem_minmax(0,1fr)]",
@@ -109,7 +109,7 @@ export function AppShell({ children }: { children: ReactNode }) {
       <aside
         aria-hidden={isSidebarCollapsed}
         className={cn(
-          "hidden min-h-screen w-[15.5rem] min-w-0 overflow-hidden border-r border-line bg-surface opacity-100 transition-[opacity,transform] duration-300 motion-reduce:transition-none lg:flex lg:flex-col",
+          "hidden min-h-dvh w-[15.5rem] min-w-0 overflow-hidden border-r border-line bg-surface opacity-100 transition-[opacity,transform] duration-300 motion-reduce:transition-none lg:flex lg:flex-col",
           isSidebarCollapsed && "pointer-events-none -translate-x-full opacity-0",
         )}
         inert={isSidebarCollapsed}

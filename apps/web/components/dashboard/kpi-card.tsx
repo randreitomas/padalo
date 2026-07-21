@@ -31,7 +31,7 @@ export function KpiCard({ detail, emphasis = "secondary", label, status, value }
           </p>
           <p
             className={cn(
-              "mt-2 font-semibold",
+              "mt-2 font-semibold tabular-nums",
               primary ? "text-3xl sm:text-4xl" : "text-2xl text-ink",
             )}
           >

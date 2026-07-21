@@ -317,7 +317,7 @@ export function BillsPage() {
                     <td className="px-5 py-4">
                       <Badge variant={statusTone[bill.status]}>{bill.status}</Badge>
                     </td>
-                    <td className="px-5 py-4 text-right font-semibold text-ink">
+                    <td className="px-5 py-4 text-right font-semibold tabular-nums text-ink">
                       {formatPhp(bill.amount_php)}
                     </td>
                     <td className="px-5 py-4">

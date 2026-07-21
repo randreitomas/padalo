@@ -19,7 +19,7 @@ export function EnvelopeBalanceList({ envelopes }: { envelopes: Envelope[] }) {
                   <p className="truncate text-sm font-semibold text-ink">{envelope.name}</p>
                   <p
                     className={cn(
-                      "shrink-0 text-sm font-medium",
+                      "shrink-0 text-sm font-medium tabular-nums",
                       low ? "text-coral" : "text-muted",
                     )}
                   >

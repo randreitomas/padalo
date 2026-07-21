@@ -335,8 +335,8 @@ export function TransactionsPage() {
                       <td
                         className={
                           credit
-                            ? "px-5 py-4 text-right font-semibold text-lagoon"
-                            : "px-5 py-4 text-right font-semibold text-ink"
+                            ? "px-5 py-4 text-right font-semibold tabular-nums text-lagoon"
+                            : "px-5 py-4 text-right font-semibold tabular-nums text-ink"
                         }
                       >
                         {credit ? "+" : "-"}

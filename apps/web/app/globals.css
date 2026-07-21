@@ -12,9 +12,13 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
-  min-height: 100vh;
+  min-height: 100dvh;
   background: #f4f7f6;
   font-family:
     var(--font-plus-jakarta),
@@ -24,6 +28,16 @@ body {
     BlinkMacSystemFont,
     "Segoe UI",
     sans-serif;
+}
+
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
 }
 
 a:focus-visible,
@@ -104,12 +118,20 @@ textarea {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
   .landing-reveal {
     animation: none;
   }
 
   .product-frame-image {
     transition: none;
+  }
+
+  .product-frame:hover .product-frame-image {
+    transform: none;
   }
 }
 

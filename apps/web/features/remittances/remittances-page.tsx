@@ -313,11 +313,13 @@ export function RemittancesPage() {
                       </div>
                     </td>
                     <td className="px-5 py-4 text-muted">{formatDateTime(remittance.sent_at)}</td>
-                    <td className="px-5 py-4 text-muted">
+                    <td className="px-5 py-4 text-muted tabular-nums">
                       {formatDecimal(remittance.source_amount)} {remittance.source_currency}
                     </td>
-                    <td className="px-5 py-4 text-muted">{formatPhp(remittance.fee_php)}</td>
-                    <td className="px-5 py-4 text-right font-semibold text-lagoon">
+                    <td className="px-5 py-4 text-muted tabular-nums">
+                      {formatPhp(remittance.fee_php)}
+                    </td>
+                    <td className="px-5 py-4 text-right font-semibold tabular-nums text-lagoon">
                       {formatPhp(remittance.amount_php)}
                     </td>
                     <td className="px-5 py-4">

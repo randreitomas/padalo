@@ -23,7 +23,9 @@ export function EnvelopeCard({ envelope, actions }: { envelope: Envelope; action
         {actions ?? <WalletCards className="size-4 shrink-0 text-lagoon" aria-hidden="true" />}
       </CardHeader>
       <CardContent>
-        <p className="text-xl font-semibold text-ink">{formatPhp(envelope.current_balance_php)}</p>
+        <p className="text-xl font-semibold tabular-nums text-ink">
+          {formatPhp(envelope.current_balance_php)}
+        </p>
         <div
           className="mt-4 h-2 overflow-hidden rounded bg-[#e8efed]"
           aria-label={`${percent.toFixed(0)}% remaining`}

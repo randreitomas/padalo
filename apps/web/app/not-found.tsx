@@ -6,7 +6,7 @@ export default function NotFound() {
   return (
     <main
       id="main-content"
-      className="flex min-h-screen items-center justify-center bg-canvas px-5 text-center"
+      className="flex min-h-dvh items-center justify-center bg-canvas px-5 text-center"
     >
       <div className="max-w-md">
         <p className="text-sm font-semibold text-lagoon">Padalo</p>

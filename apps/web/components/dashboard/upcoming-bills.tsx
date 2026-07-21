@@ -52,7 +52,9 @@ export function UpcomingBills({ bills }: { bills: Bill[] }) {
                     <p className="mt-1 text-xs text-muted">Due {formatDate(bill.due_date)}</p>
                   </div>
                   {bill.recurring ? <Badge variant="info">Recurring</Badge> : null}
-                  <p className="text-sm font-semibold text-ink">{formatPhp(bill.amount_php)}</p>
+                  <p className="text-sm font-semibold tabular-nums text-ink">
+                    {formatPhp(bill.amount_php)}
+                  </p>
                 </li>
               ))}
             </ul>

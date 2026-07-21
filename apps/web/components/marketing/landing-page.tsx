@@ -84,7 +84,10 @@ export function LandingPage() {
                 bills, and timing into a calmer next conversation.
               </p>
               <div className="landing-reveal landing-reveal-delay-3 mt-8 flex flex-wrap justify-center gap-3">
-                <Button asChild className="h-11 rounded-full px-6 hover:-translate-y-px">
+                <Button
+                  asChild
+                  className="h-11 rounded-full px-6 hover:-translate-y-px motion-reduce:hover:translate-y-0"
+                >
                   <Link href="/dashboard">
                     Start demo
                     <ArrowRight aria-hidden="true" className="size-4" />
@@ -92,7 +95,7 @@ export function LandingPage() {
                 </Button>
                 <Button
                   asChild
-                  className="h-11 rounded-full px-6 hover:-translate-y-px"
+                  className="h-11 rounded-full px-6 hover:-translate-y-px motion-reduce:hover:translate-y-0"
                   variant="secondary"
                 >
                   <a href="#architecture">View architecture</a>
@@ -125,7 +128,9 @@ export function LandingPage() {
                   key={row.number}
                   className="grid gap-5 border-b border-[#dce3df] py-9 sm:py-11 lg:grid-cols-[7rem_minmax(0,1fr)_minmax(0,0.8fr)] lg:gap-8"
                 >
-                  <p className="text-3xl font-extrabold tracking-tight text-lagoon">{row.number}</p>
+                  <p className="text-3xl font-extrabold tracking-tight text-lagoon tabular-nums">
+                    {row.number}
+                  </p>
                   <div>
                     <p className="text-sm font-bold tracking-[0.1em] text-[#53625c]">{row.title}</p>
                     <h3 className="mt-3 max-w-[620px] text-2xl font-bold leading-[1.12] tracking-tight text-[#1b2924] sm:text-3xl">
@@ -206,13 +211,13 @@ export function LandingPage() {
                 <dl className="mt-6 grid min-h-0 flex-1 grid-rows-3 gap-3">
                   <div className="flex min-h-0 items-center justify-between gap-5 rounded-md bg-[#e7f3ef] px-4 py-4 sm:px-5">
                     <dt className="text-sm font-bold text-[#176554] sm:text-base">Available now</dt>
-                    <dd className="text-2xl font-extrabold tracking-tight text-[#176554] sm:text-3xl">
+                    <dd className="text-2xl font-extrabold tracking-tight text-[#176554] tabular-nums sm:text-3xl">
                       P24,381
                     </dd>
                   </div>
                   <div className="flex min-h-0 items-center justify-between gap-5 rounded-md bg-[#fcf3da] px-4 py-4 sm:px-5">
                     <dt className="text-sm font-bold text-[#8a6200] sm:text-base">Visible ahead</dt>
-                    <dd className="text-2xl font-extrabold tracking-tight text-[#8a6200] sm:text-3xl">
+                    <dd className="text-2xl font-extrabold tracking-tight text-[#8a6200] tabular-nums sm:text-3xl">
                       4 bills
                     </dd>
                   </div>
@@ -220,7 +225,7 @@ export function LandingPage() {
                     <dt className="text-sm font-bold text-[#376d93] sm:text-base">
                       FXPilot signal
                     </dt>
-                    <dd className="text-2xl font-extrabold tracking-tight text-[#376d93] sm:text-3xl">
+                    <dd className="text-2xl font-extrabold tracking-tight text-[#376d93] tabular-nums sm:text-3xl">
                       Thursday
                     </dd>
                   </div>
@@ -309,7 +314,7 @@ export function LandingPage() {
             </p>
             <Button
               asChild
-              className="mt-8 h-11 rounded-full bg-white px-6 text-[#176f68] hover:-translate-y-px hover:bg-[#e7f0ed]"
+              className="mt-8 h-11 rounded-full bg-white px-6 text-[#176f68] hover:-translate-y-px hover:bg-[#e7f0ed] motion-reduce:hover:translate-y-0"
             >
               <Link href="/dashboard">
                 Start the demo
@@ -323,8 +328,8 @@ export function LandingPage() {
       <footer className="bg-[#101b17] text-[#c9d4d0]">
         <div className="mx-auto max-w-[920px] px-5 py-8 text-center text-xs leading-6 sm:px-8 sm:text-sm">
           <p>
-            Built with Open AI <span aria-hidden="true">·</span> GPT-5.6 Terra Ultra{" "}
-            <span aria-hidden="true">·</span> Open AI Build Week 2026{" "}
+            Built with OpenAI <span aria-hidden="true">·</span> GPT-5.6 Terra Ultra{" "}
+            <span aria-hidden="true">·</span> OpenAI Build Week 2026{" "}
             <span aria-hidden="true">·</span> Developed by Ralph Andrei Masangkay{" "}
             <span aria-hidden="true">·</span>{" "}
             <a
